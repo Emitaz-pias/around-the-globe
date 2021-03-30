@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Around the globe</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+
+    <h1 id="header">Welcome To the encyclopedia</h1>
+    <div id="home" >
+        <h1>Home page</h1>
+        <h2>Find All country names of the planet </h2> 
+        <br>
+        <button id="showBtn"> Show All countries</button>
+    </div>
+    <div class="names named" id="countryNames"></div>
+    
+    <script>
+      loadData = async () => {
+        const response = await fetch("https://restcountries.eu/rest/v2/all");
+        const data = await response.json();
+        processData(data);
+        // console.log(data);
+      };
+      loadData();
+      processData = (data) => {
+        for (let i =24; i < data.length; i++) {
+          const country = data[i];
+          console.log(country);
+          showData(country);
+        }
+      };
+      showData = (country) => {
+        const element = document.createElement("h1");
+        const detailsBtn = document.createElement("button");
+        element.className = "nameOfCountry";
+        element.innerHTML = country.name;
+        const parentNode = document.getElementById("countryNames");
+        parentNode.appendChild(element);
+      };
+      // show country
+      showCountry =()=>{
+        const country = document.getElementById("countryNames").style.display = "flex"
+        const home = document.getElementById("home").style.display = "none"
+        console.log("bt");
+      }
+    //   showDetailsData = () => {};
+      // validataion
+       const home = document.getElementById("home")
+       const country = document.getElementById("countryNames")
+       if(home.style.display="block"){
+           country.style.display = "none"
+       }
+       // show button event listener
+       const getTheBtn = document.getElementById("showBtn").addEventListener("click",()=>{
+showCountry()
+       })
+    </script>
+  </body>
+</html>

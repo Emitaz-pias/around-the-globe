@@ -1,0 +1,35 @@
+*{
+    margin: none;
+    font-family: sans-serif;
+}
+body{
+    background-color: aquamarine;
+}
+
+#home{
+    position:relative;
+    left: 35%;
+    top: 40%;
+}
+#header{
+    text-align: center;
+    color:blueviolet;
+}
+.nameOfCountry{
+    margin:5%;
+    text-align: center;
+    padding: 2%;
+    border-radius:10px;
+    box-shadow: 10px 10px 5px rgb(14, 2, 36);
+    background-color: white;
+    height: 200px;
+    width: 300px;
+    border:blue solid 1px;
+    
+}
+.names{
+    display:flex;
+    justify-content:space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
