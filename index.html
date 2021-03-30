@@ -26,23 +26,29 @@
       };
       loadData();
       processData = (data) => {
-        for (let i =0; i < data.length; i++) {
-          const country = data[i];
-          console.log(country);
-          showData(country);
-        }
+        data.forEach((countries) => {
+          console.log(countries);
+          showData(countries);
+        });
+        // for (let i =0; i < data.length; i++) {
+        // }
       };
       showData = (country) => {
         const countryDiv = document.createElement("div");
-        const coutryName = document.createElement("h1");
-        const capitalName = document.createElement("p")
-        coutryName.innerText = country.name
-        capitalName.innerText = country.capital
-        countryDiv.className="nameOfCountry"
+        const elements = ` <h1> ${country.name}</h1>
+        <h4>${country.capital}<h4>
+            <button>show details</button>
+        `;
+        // const coutryName = document.createElement("h1");
+        // const capitalName = document.createElement("p")
+        // coutryName.innerText = country.name
+        // capitalName.innerText = country.capital
+        countryDiv.className = "nameOfCountry";
         const parentNode = document.getElementById("countryNames");
         parentNode.appendChild(countryDiv);
-        countryDiv.appendChild(coutryName);
-        countryDiv.appendChild(capitalName);
+        countryDiv.innerHTML = elements;
+        // countryDiv.appendChild(elements);
+        // countryDiv.appendChild(capitalName);
       };
       // show country
       showCountry = () => {
