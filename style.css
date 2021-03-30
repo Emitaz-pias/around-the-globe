@@ -12,6 +12,9 @@ body{
     top: 40%;
     color:beige;
 }
+#img{
+    width:10%;
+}
 #header{
     text-align: center;
     color:blueviolet;

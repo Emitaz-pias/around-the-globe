@@ -27,7 +27,7 @@
       loadData();
       processData = (data) => {
         data.forEach((countries) => {
-          console.log(countries);
+          //   console.log(countries);
           showData(countries);
         });
         // for (let i =0; i < data.length; i++) {
@@ -37,7 +37,8 @@
         const countryDiv = document.createElement("div");
         const elements = ` <h1> ${country.name}</h1>
         <h4>${country.capital}<h4>
-            <button>show details</button>
+            <button onClick="detailsShower('${country.name}')">show details</button>  
+            <img id="img" src="${country.flag}">          
         `;
         // const coutryName = document.createElement("h1");
         // const capitalName = document.createElement("p")
@@ -55,7 +56,6 @@
         const country = (document.getElementById("countryNames").style.display =
           "flex");
         const home = (document.getElementById("home").style.display = "none");
-        console.log("bt");
       };
       //   showDetailsData = () => {};
       // validataion
@@ -70,6 +70,20 @@
         .addEventListener("click", () => {
           showCountry();
         });
+      // country details show
+      detailsShower = (country) => {
+        const url = `https://restcountries.eu/rest/v2/name/${country}`;
+        fetch(url)
+          .then((res) => res.json())
+          .then((data) =>
+            data.forEach((country) => {
+              const flag = country.flag;
+              const population = country.population;
+              
+              console.log(population);
+            })
+          );
+      };
     </script>
   </body>
 </html>
