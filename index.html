@@ -8,16 +8,15 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-
     <h1 id="header">Welcome To the encyclopedia</h1>
-    <div id="home" >
-        <h1>Home page</h1>
-        <h2>Find All country names of the planet </h2> 
-        <br>
-        <button id="showBtn"> Show All countries</button>
+    <div id="home">
+      <h1>Home page</h1>
+      <h2>Find All country names of the planet</h2>
+      <br />
+      <button id="showBtn">Show All countries</button>
     </div>
-    <div class="names named" id="countryNames"></div>
-    
+    <div class="names" id="countryNames"></div>
+
     <script>
       loadData = async () => {
         const response = await fetch("https://restcountries.eu/rest/v2/all");
@@ -27,37 +26,44 @@
       };
       loadData();
       processData = (data) => {
-        for (let i =24; i < data.length; i++) {
+        for (let i =0; i < data.length; i++) {
           const country = data[i];
           console.log(country);
           showData(country);
         }
       };
       showData = (country) => {
-        const element = document.createElement("h1");
-        const detailsBtn = document.createElement("button");
-        element.className = "nameOfCountry";
-        element.innerHTML = country.name;
+        const countryDiv = document.createElement("div");
+        const coutryName = document.createElement("h1");
+        const capitalName = document.createElement("p")
+        coutryName.innerText = country.name
+        capitalName.innerText = country.capital
+        countryDiv.className="nameOfCountry"
         const parentNode = document.getElementById("countryNames");
-        parentNode.appendChild(element);
+        parentNode.appendChild(countryDiv);
+        countryDiv.appendChild(coutryName);
+        countryDiv.appendChild(capitalName);
       };
       // show country
-      showCountry =()=>{
-        const country = document.getElementById("countryNames").style.display = "flex"
-        const home = document.getElementById("home").style.display = "none"
+      showCountry = () => {
+        const country = (document.getElementById("countryNames").style.display =
+          "flex");
+        const home = (document.getElementById("home").style.display = "none");
         console.log("bt");
-      }
-    //   showDetailsData = () => {};
+      };
+      //   showDetailsData = () => {};
       // validataion
-       const home = document.getElementById("home")
-       const country = document.getElementById("countryNames")
-       if(home.style.display="block"){
-           country.style.display = "none"
-       }
-       // show button event listener
-       const getTheBtn = document.getElementById("showBtn").addEventListener("click",()=>{
-showCountry()
-       })
+      const home = document.getElementById("home");
+      const country = document.getElementById("countryNames");
+      if ((home.style.display = "block")) {
+        country.style.display = "none";
+      }
+      // show button event listener
+      const getTheBtn = document
+        .getElementById("showBtn")
+        .addEventListener("click", () => {
+          showCountry();
+        });
     </script>
   </body>
 </html>
